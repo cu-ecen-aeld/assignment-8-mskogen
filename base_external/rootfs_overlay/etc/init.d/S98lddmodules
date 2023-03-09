@@ -1,0 +1,30 @@
+#! /bin/sh
+
+# Init script for starting and stopping various kernel modules on system
+# startup and shutdown
+
+case "$1" in
+    start)
+        
+        echo "Loading scull driver..."
+        scull_load
+        echo "Loading faulty driver..."
+        module_load faulty
+        echo "Loading hello module..."
+        modprobe hello.ko
+        ;;
+    stop)
+        echo "Unloading scull driver..."
+        scull_unload
+        echo "Unloading faulty driver..."
+        module_unload faulty
+        echo "Unloading hello module..."
+        rmmod hello.ko
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+
+exit 0

@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_LDD
+	bool "ldd"
+	help
+	  Custom copy of the ldd3 repo which provides the scull and misc-modules components.
